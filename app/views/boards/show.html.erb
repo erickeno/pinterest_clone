@@ -5,4 +5,9 @@
   <li><%= link_to fa_icon("trash")  + " Delete Board", board_path(@board), method: :delete, data: { confirm: "Are you sure you want to delete this project?" }, class: "btn btn-danger" %>
 </li>
   </ul>
+  <h2>Pins</h2>
+  <ul class="actions">
+    <li><%= link_to "New Pin", new_board_pin_path(@board), class: "new" %></li>
+  </ul>
 </div>
+
