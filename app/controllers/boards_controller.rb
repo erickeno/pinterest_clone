@@ -1,4 +1,7 @@
 class BoardsController < ApplicationController
+
+  before_action :set_board, only: [:show, :edit, :update, :destroy]
+
   def index
    @boards = Board.all 
   end
@@ -19,15 +22,12 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @board = Board.find(params[:id])
   end
 
   def edit
-   @board = Board.find(params[:id]) 
   end
 
   def update
-    @board = Board.find(params[:id])
     if @board.update(board_params)
       redirect_to @board, notice: "Board has been updated."
     else
@@ -37,12 +37,19 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    Board.find(params[:id]).destroy
+    @board.destroy
     flash[:notice] = "Board has been deleted."
     redirect_to root_path
   end
 
   private
+
+  def set_board
+    @board = Board.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "The board you were looking for could not be found."
+    redirect_to boards_path
+  end
 
   def board_params
     params.require(:board).permit(:title, :description)
