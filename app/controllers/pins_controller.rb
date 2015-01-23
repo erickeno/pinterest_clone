@@ -29,6 +29,12 @@ class PinsController < ApplicationController
       render 'edit'
     end
   end
+
+  def destroy
+    @pin.destroy
+    flash[:notice] = "Pin has been deleted."
+    redirect_to @board
+  end
   
   private
 
