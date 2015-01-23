@@ -17,6 +17,19 @@ class PinsController < ApplicationController
     end
   end
   
+  def edit
+  end
+  
+  def update
+    if @pin.update(pin_params)
+      flash[:notice] = "Pin has been updated."
+      redirect_to [@board, @pin]
+    else
+      flash.now[:alert] = "Pin has not been updated."
+      render 'edit'
+    end
+  end
+  
   private
 
   def set_board

@@ -5,4 +5,8 @@
 <div class="page-header">
   <h2><%= @pin.name %></h2>
   <%= @pin.image %>
+  <ul class="actions">
+    <li><%= link_to "Edit Pin", [:edit, @board, @pin ], class: "edit" %></li>
+  </ul>
 </div>
+
