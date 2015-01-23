@@ -9,5 +9,12 @@
   <ul class="actions">
     <li><%= link_to "New Pin", new_board_pin_path(@board), class: "new" %></li>
   </ul>
+  <ul>
+    <div id = "pin">
+    <% @board.pins.each do |pin| %>
+      <%= link_to pin.name, [@board, pin ] %> 
+    <% end %>
+  </div>
+  </ul>
 </div>
 
