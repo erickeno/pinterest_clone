@@ -5,6 +5,9 @@
 <div class="page-header">
   <h2><%= @pin.name %></h2>
   <%= @pin.image %>
+  <p id="author">
+    Created by <%= @pin.author.email %>, <%= time_ago_in_words(@pin.created_at) %>
+  </p>
   <ul class="actions">
     <li><%= link_to "Edit Pin", [:edit, @board, @pin ], class: "edit" %></li>
     <li><%= link_to "Delete Pin", board_pin_path(@board, @pin), method: :delete, data: { confirm: "Are you sure you want to delete this pin?" }, class: "delete" %></li>

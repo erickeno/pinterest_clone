@@ -8,6 +8,7 @@ class PinsController < ApplicationController
 
   def create
     @pin = @board.pins.build(pin_params)
+    @pin.author = current_user
     if @pin.save
       flash[:notice] = "Pin has been created."
       redirect_to [@board, @pin ]

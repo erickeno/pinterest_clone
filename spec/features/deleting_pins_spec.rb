@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.feature "Deleting Pins" do
     let!(:board) { FactoryGirl.create(:board, title: "New food board") }
-    let!(:pin)   { FactoryGirl.create(:pin, name: "Food pin", board: board) }
+    let(:user)  { FactoryGirl.create(:user) }
+    let!(:pin)   { FactoryGirl.create(:pin, name: "Food pin", board: board, author: user) }
   before do
     visit board_pin_path(board, pin)
   end

@@ -1,7 +1,9 @@
 require "rails_helper"
 
 RSpec.feature "Creating Pins" do
+  let!(:user) { FactoryGirl.create(:user) }
   before do
+    login_as(user)
     FactoryGirl.create(:board, title: "Food Board")
 
     visit '/'
@@ -14,6 +16,7 @@ RSpec.feature "Creating Pins" do
     click_button "Create Pin"
 
     expect(page).to have_content("Pin has been created.")
+    expect(page).to have_content("Created by #{user.email}")
   end
 
   scenario "with missing fields" do
