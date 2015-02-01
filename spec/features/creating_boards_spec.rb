@@ -20,4 +20,11 @@
      expect(page).to have_content("Board has not been created.")
      expect(page).to have_content("Title can't be blank")
    end
+   scenario "create a board with a picture" do
+     fill_in "Title", with: "Food board with image"
+     fill_in "Description", with: "food board with image desc"
+     click_button "Create Board"
+
+     expect(page).to have_content("Board has been created.")
+   end
  end

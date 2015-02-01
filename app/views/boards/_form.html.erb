@@ -1,7 +1,8 @@
 
-<%= simple_form_for(board) do |f| %>
+<%= simple_form_for(board, html: { multipart: true } ) do |f| %>
    <%= f.input :title  %>  
    <%= f.input :description  %>
+   <%= f.input :image, as: :file %>
   <%= f.button :submit, class: "btn-primary" %>
 <% end %>
 

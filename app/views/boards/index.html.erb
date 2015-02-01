@@ -5,6 +5,7 @@
   <% @boards.each do |board| %>
     <h2><%= link_to board.title, board %></h2>
     <p><%= board.description %></p>
+    <%= image_tag(board.image.normal.url) if board.image? %>
   <% end %>
 </div>
 

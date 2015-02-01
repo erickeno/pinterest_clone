@@ -8,8 +8,14 @@
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top" role="naviagtion">
-    <div class="container">
+    <div class="container-fluid">
       <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         <%= link_to "Pinterest Clone", root_path, class: "navbar-brand" %>
       </div>
       <ul class="nav navbar-nav">
@@ -38,7 +44,7 @@
   </nav>
   <div class="container">
     <% flash.each do |key, message| %>
-    <div>
+    <div class="alert alert-<%= key %>" role="alert">
       <%= message %>
     </div>
     <% end %>
